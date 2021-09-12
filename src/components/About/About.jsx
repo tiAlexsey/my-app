@@ -1,8 +1,9 @@
 import React from "react";
+import s from './About.module.css';
 
-const Info = () => {
+const About = () => {
     return (
-        <div className='content'>
+        <div>
             <div>
                 <img
                     src='http://tibetanbuddhistencyclopedia.com/en/images/9/9a/48x768.jpg'/>
@@ -10,14 +11,14 @@ const Info = () => {
             <div>
                 Название фильма
             </div>
-            <div>
+            <div className={s.content}>
                 Описание
             </div>
-            <div>
+            <div className={s.content}>
                 Рейтинг
             </div>
         </div>
     )
 }
 
-export default Info;
+export default About;
