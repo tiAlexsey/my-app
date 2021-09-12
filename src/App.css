@@ -5,10 +5,8 @@
     grid-template-areas:
     "h h"
     "n c";
-
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    /*grid-gap: 10px;*/
 }
 
 .header {
@@ -16,7 +14,7 @@
     background-color: #A2D4AB;
 }
 
-.header img{
+.header img {
     width: 60px;
 }
 
