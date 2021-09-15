@@ -1,0 +1,14 @@
+.content {
+ margin: 0 20px;
+}
+
+.newComment {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    width: 70%;
+}
+
+.item {
+    width: 80%;
+}

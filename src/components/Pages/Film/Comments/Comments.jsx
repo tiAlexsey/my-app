@@ -2,10 +2,10 @@ import React from "react";
 import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
-const Comments = () => {
+const Comments = (props) => {
     return (
-        <div>
-            <div className={s.item}>
+        <div className={s.content}>
+            <div className={s.newComment}>
                 <textarea></textarea>
                 <button>Добавить комментарий</button>
             </div>
