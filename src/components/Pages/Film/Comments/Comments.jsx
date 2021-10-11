@@ -3,16 +3,26 @@ import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
 const Comments = (props) => {
+
+    let commentsEllements = props.comments.map(с => (
+        <Comment className={s.item} id={с.id} name={с.name} text={с.text} like={с.like}
+                 dislike={с.dislike} avatar={с.avatar}/>)
+    );
+
+    let newCommentElement = React.createRef();
+
+    let addComment = () => {
+        let text = newCommentElement.current.value;
+        alert(text);
+    };
+
     return (
         <div className={s.content}>
             <div className={s.newComment}>
-                <textarea></textarea>
-                <button>Добавить комментарий</button>
+                <textarea ref={newCommentElement}></textarea>
+                <button onClick={addComment}>Добавить комментарий</button>
             </div>
-            <Comment name={'Пользователь #123'} text={'Очень большой отзыв о фильме. ' +
-            'Самое интересное что видел'} like={'15'} dislike={'2'}/>
-            <Comment className={s.item} name={'Гена Гиена'} text={'Какой ужасный фильм'} like={'1'} dislike={'11'}/>
-            <Comment className={s.item} name={'Диппер-Разрушитель'} text={'Бекон'} like={'28'} dislike={'8'}/>
+            {commentsEllements}
         </div>
     )
 }

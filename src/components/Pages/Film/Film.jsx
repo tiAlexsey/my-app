@@ -6,10 +6,10 @@ import Comments from "./Comments/Comments";
 const Film = (props) => {
     return (
         <div className={s.content}>
-            <Description/>
-            <Comments/>
+            <Description description={props.filmPage.description}/>
+            <Comments comments={props.filmPage.comments}/>
         </div>
-    )
+    );
 }
 
 export default Film;

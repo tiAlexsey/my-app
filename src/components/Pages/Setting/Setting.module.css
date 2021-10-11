@@ -1,0 +1,13 @@
+.setting {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+}
+
+.menu {
+    padding: 10px;
+}
+
+.content {
+
+}

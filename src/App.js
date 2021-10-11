@@ -9,18 +9,18 @@ import Search from "./components/Pages/Search/Search";
 import ToBeSeen from "./components/Pages/ToBeSeen/ToBeSeen";
 import Viewed from "./components/Pages/Viewed/Viewed";
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    <Route path={'/aboutFilm'} component={Film}/>
-                    <Route path={'/setting'} component={Setting}/>
-                    <Route path={'/search'} component={Search}/>
-                    <Route path={'/toBeSeen'} component={ToBeSeen}/>
-                    <Route path={'/Viewed'} component={Viewed}/>
+                    <Route exact path={'/FilmPage'} render={() => <Film filmPage={props.state.filmPage}/>}/>
+                    <Route path={'/setting'} render={() => <Setting/>}/>
+                    <Route exact path={'/search'} render={() => <Search/>}/>
+                    <Route exact path={'/toBeSeen'} render={() => <ToBeSeen/>}/>
+                    <Route exact path={'/Viewed'} render={() => <Viewed/>}/>
                 </div>
             </div>
         </BrowserRouter>

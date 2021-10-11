@@ -4,7 +4,11 @@
     padding: 20px;
 }
 
-.item a{
+.item {
+    padding: 5px 10px;
+}
+
+.item a {
     color: white;
     text-decoration: none;
 }

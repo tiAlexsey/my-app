@@ -1,0 +1,16 @@
+.content {
+    background-color: #E6EFC2;
+    height: 500px;
+}
+
+.header {
+    padding: 20px;
+    font-size: large;
+}
+
+.search {
+    margin: 0 20px;
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    width: 70%;
+}

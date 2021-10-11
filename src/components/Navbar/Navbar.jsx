@@ -5,8 +5,8 @@ import {NavLink} from "react-router-dom";
 const NavBar = () => {
     return (
         <nav className={s.nav}>
-            <div className={s.item} >
-                <NavLink to={'/aboutFilm'} activeClassName={s.activeLink}>О фильме</NavLink>
+            <div className={s.item}>
+                <NavLink to={'/FilmPage'} activeClassName={s.activeLink}>О фильме</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to={'/search'} activeClassName={s.activeLink}>Поиск фильма</NavLink>
