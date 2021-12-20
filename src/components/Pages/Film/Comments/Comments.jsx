@@ -13,7 +13,7 @@ const Comments = (props) => {
 
     let addComment = () => {
         let text = newCommentElement.current.value;
-        alert(text);
+        props.addComment(text);
     };
 
     return (

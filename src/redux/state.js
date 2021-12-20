@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     filmPage: {
         description:
@@ -58,7 +60,20 @@ let state = {
         ]
 
     }
+}
 
+export let addComment = (postComment) => {
+    let newComment = {
+        id: 5,
+        filmId: 1,
+        name: 'katya',
+        text: postComment,
+        like: '0',
+        dislike: '0',
+        avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
+    }
+    state.filmPage.comments.push(newComment);
+    rerenderEntireTree(state);
 }
 
 export default state;
