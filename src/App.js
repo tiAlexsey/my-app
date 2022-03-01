@@ -19,9 +19,8 @@ const App = (props) => {
                     <Route exact path={'/FilmPage'}
                         render={() => <Film
                             filmPage={props.state.filmPage}
-                            addComment={props.addComment}
+                            dispatch={props.dispatch}
                             newCommentText={props.state.filmPage.newCommentText}
-                            updateNewComment={props.updateNewComment}
                         />}
                     />
                     <Route path={'/setting'} render={() => <Setting />} />

@@ -13,12 +13,12 @@ const Comments = (props) => {
     let newCommentElement = React.createRef();
 
     let addComment = () => {
-        props.addComment();
+        props.dispatch({type:'ADD-COMMENT'});
     };
 
     let onCommentChange = () => {
         let text = newCommentElement.current.value;
-        props.updateNewComment(text);
+        props.dispatch({type:'UPDATE-NEW-COMMENT', text: text});
     };
 
     return (

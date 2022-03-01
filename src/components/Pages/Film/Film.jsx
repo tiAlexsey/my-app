@@ -8,9 +8,8 @@ const Film = (props) => {
         <div className={s.content}>
             <Description description={props.filmPage.description} />
             <Comments comments={props.filmPage.comments}
-                addComment={props.addComment}
+                dispatch={props.dispatch}
                 newCommentText={props.newCommentText}
-                updateNewComment={props.updateNewComment}
             />
         </div>
     );
