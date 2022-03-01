@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Film from "./components/Pages/Film/Film";
@@ -13,15 +13,21 @@ const App = (props) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
+                <Header />
+                <Navbar />
                 <div className={'app-wrapper-content'}>
                     <Route exact path={'/FilmPage'}
-                           render={() => <Film filmPage={props.state.filmPage} addComment={props.addComment}/>}/>
-                    <Route path={'/setting'} render={() => <Setting/>}/>
-                    <Route exact path={'/search'} render={() => <Search/>}/>
-                    <Route exact path={'/toBeSeen'} render={() => <ToBeSeen/>}/>
-                    <Route exact path={'/Viewed'} render={() => <Viewed/>}/>
+                        render={() => <Film
+                            filmPage={props.state.filmPage}
+                            addComment={props.addComment}
+                            newCommentText={props.state.filmPage.newCommentText}
+                            updateNewComment={props.updateNewComment}
+                        />}
+                    />
+                    <Route path={'/setting'} render={() => <Setting />} />
+                    <Route exact path={'/search'} render={() => <Search />} />
+                    <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
+                    <Route exact path={'/Viewed'} render={() => <Viewed />} />
                 </div>
             </div>
         </BrowserRouter>

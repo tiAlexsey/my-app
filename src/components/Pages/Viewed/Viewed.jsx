@@ -1,5 +1,4 @@
 import React from "react";
-import s from './Viewed.module.css'
 
 const Viewed = (props) =>{
     return (

@@ -6,8 +6,12 @@ import Comments from "./Comments/Comments";
 const Film = (props) => {
     return (
         <div className={s.content}>
-            <Description description={props.filmPage.description}/>
-            <Comments comments={props.filmPage.comments} addComment={props.addComment}/>
+            <Description description={props.filmPage.description} />
+            <Comments comments={props.filmPage.comments}
+                addComment={props.addComment}
+                newCommentText={props.newCommentText}
+                updateNewComment={props.updateNewComment}
+            />
         </div>
     );
 }

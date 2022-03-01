@@ -1,16 +1,17 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log('State changed');
+};
 
 let state = {
     filmPage: {
         description:
-            {
-                filmId: 1,
-                name: 'Начало',
-                text: 'Аферисты проникают в чужие сны в целях промышленного шпионажа. Триллер Кристофера Нолана с Леонардо ДиКаприо',
-                poster: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/a4a709fc-8dd9-41f4-8105-17d6e0b8bed0/2560x',
-                rate: '8.6'
-            }
-        ,
+        {
+            filmId: 1,
+            name: 'Начало',
+            text: 'Аферисты проникают в чужие сны в целях промышленного шпионажа. Триллер Кристофера Нолана с Леонардо ДиКаприо',
+            poster: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/a4a709fc-8dd9-41f4-8105-17d6e0b8bed0/2560x',
+            rate: '8.6'
+        },
         comments: [
             {
                 id: 1,
@@ -57,23 +58,35 @@ let state = {
                 dislike: '0',
                 avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
             }
-        ]
-
+        ],
+        newCommentText: 'Katya - JopA'
     }
 }
 
-export let addComment = (postComment) => {
+window.state = state;
+
+export const addComment = () => {
     let newComment = {
         id: 5,
         filmId: 1,
         name: 'katya',
-        text: postComment,
+        text: state.filmPage.newCommentText,
         like: '0',
         dislike: '0',
         avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
     }
     state.filmPage.comments.push(newComment);
+    state.filmPage.newCommentText = '';
     rerenderEntireTree(state);
-}
+};
+
+export const updateNewComment = (text) => {
+    state.filmPage.newCommentText = text;
+    rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+};
 
 export default state;
