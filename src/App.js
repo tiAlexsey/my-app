@@ -24,7 +24,13 @@ const App = (props) => {
                         />}
                     />
                     <Route path={'/setting'} render={() => <Setting />} />
-                    <Route exact path={'/search'} render={() => <Search />} />
+                    <Route exact path={'/search'}
+                        render={() => < Search
+                            searchResultPage={props.state.searchResultPage}
+                            dispatch={props.dispatch}
+                            newSearchText={props.state.searchResultPage.newSearchText}
+                        />}
+                    />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
                     <Route exact path={'/Viewed'} render={() => <Viewed />} />
                 </div>

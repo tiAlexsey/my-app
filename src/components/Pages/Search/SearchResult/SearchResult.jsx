@@ -3,8 +3,10 @@ import s from './SearchResult.module.css'
 
 const SearchResult = (props) => {
     return (
-        <div className={s.content}>
-            Результаты поиска
+        <div>
+            <div className={s.content}>
+                {props.text}
+            </div>
         </div>
     );
 }

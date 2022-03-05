@@ -1,37 +1,53 @@
-import { act } from "react-dom/cjs/react-dom-test-utils.production.min";
+const ADD_COMMENT = 'ADD-COMMENT';
+const UPDATE_NEW_COMMENT = 'UPDATE-NEW-COMMENT';
+const WRITE_NEW_COMMENT = 'Введите новый комментарий';
+const ADD_NEW_SEARCH_FILM = 'NEW-SEARCH-FILM';
+const UPDATE_NEW_SEARCH_FILM = 'UPDATE-NEW-SEARCH-FILM';
+const WRITE_NEW_SEARCH_FILM_TEXT = 'Введите название фильма для поиска';
+
 
 let store = {
     _state: {
+        searchResultPage: {
+            searchResult: [{
+                userId: 1,
+                searchId: 1,
+                stringSearch: "Начало",
+                filmId: 1
+            }, {
+                userId: 1,
+                searchId: 2,
+                stringSearch: "А кто это сделал",
+                filmId: 2
+            }],
+            newSearchText: WRITE_NEW_SEARCH_FILM_TEXT
+        },
         filmPage: {
-            description:
-            {
+            description: {
                 filmId: 1,
                 name: 'Начало',
                 text: 'Аферисты проникают в чужие сны в целях промышленного шпионажа. Триллер Кристофера Нолана с Леонардо ДиКаприо',
                 poster: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/a4a709fc-8dd9-41f4-8105-17d6e0b8bed0/2560x',
                 rate: '8.6'
             },
-            comments: [
-                {
-                    id: 1,
+            comments: [{
+                    commentId: 1,
                     filmId: 1,
                     name: 'Пользователь #123',
                     text: 'Очень большой отзыв о фильме. \'Самое интересное что видел\'',
                     like: '15',
                     dislike: '2',
                     avatar: 'https://cs6.pikabu.ru/avatars/2097/x2097369-1271064885.png'
-                }
-                , {
-                    id: 1,
+                }, {
+                    commentId: 1,
                     filmId: 1,
                     name: 'ЕГООООР',
                     text: 'ЕГООООР',
                     like: '15',
                     dislike: '2',
                     avatar: 'https://cs6.pikabu.ru/avatars/2097/x2097369-1271064885.png'
-                }
-                , {
-                    id: 2,
+                }, {
+                    commentId: 2,
                     filmId: 1,
                     name: 'Гена Гиена',
                     text: 'Какой ужасный фильм',
@@ -40,7 +56,7 @@ let store = {
                     avatar: 'https://mobimg.b-cdn.net/v3/fetch/4a/4ab4b2a2f3984e85c6b8325f972f65dc.jpeg'
                 },
                 {
-                    id: 3,
+                    commentId: 3,
                     filmId: 1,
                     name: 'Диппер-Разрушитель',
                     text: 'Бекон',
@@ -49,7 +65,7 @@ let store = {
                     avatar: 'https://avatars.mds.yandex.net/get-zen_doc/1639101/pub_611768146eab3f04defe25d7_6117687f7e37175eb6759ed8/scale_1200'
                 },
                 {
-                    id: 4,
+                    commentId: 4,
                     filmId: 1,
                     name: 'Катя',
                     text: 'я катя',
@@ -58,10 +74,10 @@ let store = {
                     avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
                 }
             ],
-            newCommentText: 'Katya - JopA'
+            newCommentText: WRITE_NEW_COMMENT
         }
     },
-    _callSubscriber() {
+    _callSubscriber(a) {
         console.log('State changed');
     },
     getState() {
@@ -70,10 +86,10 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    dispatch(action){
-        if (action.type==='ADD-COMMENT'){
+    dispatch(action) {
+        if (action.type === ADD_COMMENT) {
             let newComment = {
-                id: 5,
+                commentId: 5,
                 filmId: 1,
                 name: 'katya',
                 text: this._state.filmPage.newCommentText,
@@ -82,16 +98,37 @@ let store = {
                 avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
             }
             this._state.filmPage.comments.push(newComment);
-            this._state.filmPage.newCommentText = '';
+            this._state.filmPage.newCommentText = WRITE_NEW_COMMENT;
             this._callSubscriber(this._state);
-        } else if (action.type==='UPDATE-NEW-COMMENT'){
-            debugger;
+        } else if (action.type === UPDATE_NEW_COMMENT) {
             this._state.filmPage.newCommentText = action.text;
+            this._callSubscriber(this._state);
+        } else if (action.type === ADD_NEW_SEARCH_FILM) {
+            let newSearchResult = {
+                userId: 1,
+                searchId: 1,
+                filmId: 1,
+                stringSearch: this._state.searchResultPage.newSearchText
+            }
+            this._state.searchResultPage.searchResult.push(newSearchResult);
+            this._state.searchResultPage.newSearchText = WRITE_NEW_SEARCH_FILM_TEXT;
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_NEW_SEARCH_FILM) {
+            this._state.searchResultPage.newSearchText = action.text;
             this._callSubscriber(this._state);
         }
     }
 }
 
+// @ts-ignore
 window.state = store;
+
+export const addCommenctActionCreator = () => ({ type: ADD_COMMENT })
+
+export const updateNewCommenctActionCreator = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
+
+export const addSearchFilm = () => ({ type: ADD_NEW_SEARCH_FILM })
+
+export const updateNewSearchFilm = (text) => ({ type: UPDATE_NEW_SEARCH_FILM, text: text })
 
 export default store;
