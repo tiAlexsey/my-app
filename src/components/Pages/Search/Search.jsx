@@ -1,5 +1,5 @@
 import React from "react";
-import { addSearchFilm, updateNewSearchFilm } from "redux/state";
+import { addSearchFilm, updateNewSearchFilm } from "redux/search-result-reducer";
 import s from './Search.module.css';
 import SearchResult from "./SearchResult/SearchResult";
 

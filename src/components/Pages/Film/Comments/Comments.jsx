@@ -1,5 +1,5 @@
 import React from "react";
-import { addCommenctActionCreator, updateNewCommenctActionCreator } from "redux/state";
+import { addCommenctActionCreator, updateNewCommenctActionCreator } from "redux/film-reducer";
 import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
