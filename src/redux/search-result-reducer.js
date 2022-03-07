@@ -2,7 +2,22 @@ const ADD_NEW_SEARCH_FILM = 'NEW-SEARCH-FILM';
 const UPDATE_NEW_SEARCH_FILM = 'UPDATE-NEW-SEARCH-FILM';
 const WRITE_NEW_SEARCH_FILM_TEXT = 'Введите название фильма для поиска';
 
-const searchResultReducer = (state, action) => {
+let initialState = {
+    searchResult: [{
+        userId: 1,
+        searchId: 1,
+        stringSearch: "Начало",
+        filmId: 1
+    }, {
+        userId: 1,
+        searchId: 2,
+        stringSearch: "А кто это сделал",
+        filmId: 2
+    }],
+    newSearchText: WRITE_NEW_SEARCH_FILM_TEXT
+}
+
+const searchResultReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_SEARCH_FILM:
             let newSearchResult = {
@@ -22,8 +37,8 @@ const searchResultReducer = (state, action) => {
     }
 }
 
-export const addSearchFilm = () => ({ type: ADD_NEW_SEARCH_FILM })
+export const addSearchFilmActionCreator = () => ({ type: ADD_NEW_SEARCH_FILM })
 
-export const updateNewSearchFilm = (text) => ({ type: UPDATE_NEW_SEARCH_FILM, text: text })
+export const updateNewSearchFilmTextActionCreator = (text) => ({ type: UPDATE_NEW_SEARCH_FILM, text: text })
 
 export default searchResultReducer;

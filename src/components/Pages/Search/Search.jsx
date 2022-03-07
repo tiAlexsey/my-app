@@ -1,5 +1,4 @@
 import React from "react";
-import { addSearchFilm, updateNewSearchFilm } from "redux/search-result-reducer";
 import s from './Search.module.css';
 import SearchResult from "./SearchResult/SearchResult";
 
@@ -8,31 +7,29 @@ const Search = (props) => {
 
     let newSearchFilm = React.createRef();
 
-    let onClickAddSearchFilm = () => {
-        props.dispatch(addSearchFilm());
-    };
-
-    let searchResultElement = props.searchResultPage.searchResult.map(c => (
+    let searchResultElement = props.searchResult.map(c => (
         <SearchResult text={c.stringSearch} />)
     );
 
-    let onTextAreaChange = () => {
-        props.dispatch(updateNewSearchFilm(''));
+    let addSearchFilm = () => {
+        props.addSearchFilm();
     };
 
     let onSearchChange = () => {
         let text = newSearchFilm.current.value;
-        debugger;
-        props.dispatch(updateNewSearchFilm(text));
+        props.updateNewSearchFilm(text);
     };
 
+    let onTextAreaChange = () => {
+        props.updateNewSearchFilmChange();
+    };
     return (
         <div className={s.content}>
             <div className={s.header}>Найти фильм</div>
             <div className={s.search}>
                 <textarea ref={newSearchFilm} onChange={onSearchChange}
                     onClick={onTextAreaChange} value={props.newSearchText} />
-                <button onClick={onClickAddSearchFilm}>Найти</button>
+                <button onClick={addSearchFilm}>Найти</button>
             </div>
             <div>
                 Недавние поиски

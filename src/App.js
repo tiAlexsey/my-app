@@ -5,9 +5,9 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Film from "./components/Pages/Film/Film";
 import Setting from "./components/Pages/Setting/Setting";
-import Search from "./components/Pages/Search/Search";
 import ToBeSeen from "./components/Pages/ToBeSeen/ToBeSeen";
 import Viewed from "./components/Pages/Viewed/Viewed";
+import SearchContainer from "components/Pages/Search/SearchContainer";
 
 const App = (props) => {
     return (
@@ -18,17 +18,14 @@ const App = (props) => {
                 <div className={'app-wrapper-content'}>
                     <Route exact path={'/FilmPage'}
                         render={() => <Film
+                            store={props.store}
                             filmPage={props.state.filmPage}
-                            dispatch={props.dispatch}
-                            newCommentText={props.state.filmPage.newCommentText}
                         />}
                     />
                     <Route path={'/setting'} render={() => <Setting />} />
                     <Route exact path={'/search'}
-                        render={() => < Search
-                            searchResultPage={props.state.searchResultPage}
-                            dispatch={props.dispatch}
-                            newSearchText={props.state.searchResultPage.newSearchText}
+                        render={() => < SearchContainer
+                            store={props.store}
                         />}
                     />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
