@@ -7,8 +7,8 @@ const Search = (props) => {
 
     let newSearchFilm = React.createRef();
 
-    let searchResultElement = props.searchResult.map(c => (
-        <SearchResult text={c.stringSearch} />)
+    let searchResultElement = props.searchResultPage.searchResult.map(sr => (
+        <SearchResult text={sr.stringSearch} key={sr.id}/>)
     );
 
     let addSearchFilm = () => {
@@ -28,7 +28,7 @@ const Search = (props) => {
             <div className={s.header}>Найти фильм</div>
             <div className={s.search}>
                 <textarea ref={newSearchFilm} onChange={onSearchChange}
-                    onClick={onTextAreaChange} value={props.newSearchText} />
+                    onClick={onTextAreaChange} value={props.searchResultPage.newSearchText} />
                 <button onClick={addSearchFilm}>Найти</button>
             </div>
             <div>

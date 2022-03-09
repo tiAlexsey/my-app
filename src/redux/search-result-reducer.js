@@ -3,21 +3,25 @@ const UPDATE_NEW_SEARCH_FILM = 'UPDATE-NEW-SEARCH-FILM';
 const WRITE_NEW_SEARCH_FILM_TEXT = 'Введите название фильма для поиска';
 
 let initialState = {
-    searchResult: [{
-        userId: 1,
-        searchId: 1,
-        stringSearch: "Начало",
-        filmId: 1
-    }, {
-        userId: 1,
-        searchId: 2,
-        stringSearch: "А кто это сделал",
-        filmId: 2
-    }],
+    searchResult: [
+        {
+            userId: 1,
+            searchId: 1,
+            stringSearch: "Начало",
+            filmId: 1
+        }, {
+            userId: 1,
+            searchId: 2,
+            stringSearch: "А кто это сделал",
+            filmId: 2
+        }
+    ],
     newSearchText: WRITE_NEW_SEARCH_FILM_TEXT
 }
 
 const searchResultReducer = (state = initialState, action) => {
+    let stateCopy;
+
     switch (action.type) {
         case ADD_NEW_SEARCH_FILM:
             let newSearchResult = {
@@ -26,12 +30,16 @@ const searchResultReducer = (state = initialState, action) => {
                 filmId: 1,
                 stringSearch: state.newSearchText
             }
-            state.searchResult.push(newSearchResult);
-            state.newSearchText = WRITE_NEW_SEARCH_FILM_TEXT;
-            return state;
+            return {
+                ...state,
+                searchResult: [...state.searchResult, newSearchResult],
+                newSearchText: WRITE_NEW_SEARCH_FILM_TEXT
+            }
         case UPDATE_NEW_SEARCH_FILM:
-            state.newSearchText = action.text;
-            return state;
+            return {
+                ...state,
+                newSearchText: action.text
+            }
         default:
             return state;
     }

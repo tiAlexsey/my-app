@@ -59,6 +59,7 @@ let initialState = {
 };
 
 const filmReducer = (state = initialState, action) => {
+    let stateCopy;
     switch (action.type) {
         case ADD_COMMENT:
             let newComment = {
@@ -69,13 +70,17 @@ const filmReducer = (state = initialState, action) => {
                 like: '0',
                 dislike: '0',
                 avatar: 'https://img1.goodfon.ru/original/320x240/6/ea/lisa-ryzhaia-morda-vzgliad-portret.jpg'
-            };
-            state.comments.push(newComment);
-            state.newCommentText = WRITE_NEW_COMMENT;
-            return state;
+            }
+            return {
+                ...state,
+                comments: [...state.comments, newComment],
+                newCommentText: WRITE_NEW_COMMENT
+            }
         case UPDATE_NEW_COMMENT:
-            state.newCommentText = action.text;
-            return state;
+            return {
+                ...state,
+                newCommentText: action.text
+            }
         default:
             return state;
     }

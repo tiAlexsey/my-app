@@ -5,36 +5,32 @@ import s from './Comments.module.css';
 
 const Comments = (props) => {
 
-    let commentEllements = props.comments.map(с => (
-        <Comment className={s.item} id={с.commentId} name={с.name} text={с.text} like={с.like}
-            dislike={с.dislike} avatar={с.avatar}
+    let commentEllements = props.comments.map(c => (
+        <Comment className={s.item} id={c.commentId} name={c.name} text={c.text} like={c.like}
+            dislike={c.dislike} avatar={c.avatar} key={c.id}
         />)
     );
 
     let newCommentElement = React.createRef();
 
     let addComment = () => {
-        //props.dispatch(addCommenctActionCreator());
         props.addCommenctActionCreator();
     };
 
     let onCommentChange = () => {
         let text = newCommentElement.current.value;
-        //props.dispatch(updateNewCommenctActionCreator(text));
         props.updateNewCommentAction(text);
     };
 
     let onTextAreaChange = () => {
-        //let text = '';
-        //props.dispatch(updateNewCommenctActionCreator(''));
         props.updateNewCommenctActionCreator('');
     };
 
     return (
         <div className={s.content}>
             <div className={s.newComment}>
-                <textarea onClick={onTextAreaChange} 
-                onChange={onCommentChange} ref={newCommentElement} value={props.newCommentText} />
+                <textarea onClick={onTextAreaChange}
+                    onChange={onCommentChange} ref={newCommentElement} value={props.newCommentText} />
                 <button onClick={addComment}>Добавить комментарий</button>
             </div>
             {commentEllements}

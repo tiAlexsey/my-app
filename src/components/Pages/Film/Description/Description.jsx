@@ -1,13 +1,12 @@
 import React from "react";
 import s from './Description.module.css';
-import Comment from "../Comments/Comment/Comment";
 
 const Description = (props) => {
     return (
         <div>
             <div className={s.content}>
                 <div className={s.poster}>
-                    <img src={props.description.poster}/>
+                    <img src={props.description.poster} />
                 </div>
                 <div className={s.about}>
                     <div className={s.header}>

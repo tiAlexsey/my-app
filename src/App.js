@@ -16,18 +16,9 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <div className={'app-wrapper-content'}>
-                    <Route exact path={'/FilmPage'}
-                        render={() => <Film
-                            store={props.store}
-                            filmPage={props.state.filmPage}
-                        />}
-                    />
+                    <Route exact path={'/FilmPage'} render={() => <Film />} />
                     <Route path={'/setting'} render={() => <Setting />} />
-                    <Route exact path={'/search'}
-                        render={() => < SearchContainer
-                            store={props.store}
-                        />}
-                    />
+                    <Route exact path={'/search'} render={() => < SearchContainer />} />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
                     <Route exact path={'/Viewed'} render={() => <Viewed />} />
                 </div>
