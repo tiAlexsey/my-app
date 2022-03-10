@@ -20,8 +20,6 @@ let initialState = {
 }
 
 const searchResultReducer = (state = initialState, action) => {
-    let stateCopy;
-
     switch (action.type) {
         case ADD_NEW_SEARCH_FILM:
             let newSearchResult = {
