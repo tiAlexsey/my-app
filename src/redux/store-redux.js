@@ -1,12 +1,12 @@
 import { combineReducers, createStore } from "redux";
 import filmReducer from "./film-reducer";
 import searchResultReducer from "./search-result-reducer";
-import viewedReducer from "./viewed-reducer";
+import filmListReducer from "./film-list-reducer";
 
 let reducers = combineReducers({
     filmPage: filmReducer,
     searchResultPage: searchResultReducer,
-    viewedPage: viewedReducer
+    filmListPage: filmListReducer
 });
 
 let store = createStore(reducers);

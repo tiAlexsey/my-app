@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { setFilmAC, unViewedAC, viewedAC } from "redux/viewed-reducer";
-import Viewed from "./Viewed";
+import { setFilmAC, unViewedAC, viewedAC } from "redux/film-list-reducer";
+import FilmList from "./FilmList";
 
 let mapStateToProps = (state) => {
     return {
-        film: state.viewedPage.film
+        film: state.filmListPage.film
     }
 }
 
@@ -21,6 +21,6 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-const ViewedConainer = connect(mapStateToProps, mapDispatchToProps)(Viewed);
+const FilmListContainer = connect(mapStateToProps, mapDispatchToProps)(FilmList);
 
-export default ViewedConainer;
+export default FilmListContainer;

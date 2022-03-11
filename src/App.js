@@ -7,7 +7,7 @@ import Film from "./components/Pages/Film/Film";
 import Setting from "./components/Pages/Setting/Setting";
 import ToBeSeen from "./components/Pages/ToBeSeen/ToBeSeen";
 import SearchContainer from "components/Pages/Search/SearchContainer";
-import ViewedConainer from "components/Pages/Viewed/ViewedContainer";
+import FilmListContainer from "components/Pages/FilmList/FilmListContainer";
 
 
 const App = (props) => {
@@ -17,11 +17,11 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <div className={'app-wrapper-content'}>
-                    <Route exact path={'/FilmPage/0'} render={() => <Film />} />
+                    <Route path={'/film/item/'} render={() => <Film />} />
                     <Route path={'/setting'} render={() => <Setting />} />
                     <Route exact path={'/search'} render={() => < SearchContainer />} />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
-                    <Route exact path={'/Viewed'} render={() => <ViewedConainer />} />
+                    <Route exact path={'/Film/list'} render={() => <FilmListContainer />} />
                 </div>
             </div>
         </BrowserRouter>

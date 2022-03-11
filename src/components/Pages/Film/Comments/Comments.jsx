@@ -4,14 +4,13 @@ import s from './Comments.module.css';
 
 
 const Comments = (props) => {
+    let newCommentElement = React.createRef();
 
     let commentEllements = props.comments.map(c => (
-        <Comment className={s.item} id={c.commentId} name={c.name} text={c.text} like={c.like}
-            dislike={c.dislike} avatar={c.avatar} key={c.id}
+        <Comment className={s.item} name={c.user.name} text={c.text} like={c.like}
+            dislike={c.dislike} avatar={c.user.url} key={c.id}
         />)
     );
-
-    let newCommentElement = React.createRef();
 
     let addComment = () => {
         props.addCommenctActionCreator();

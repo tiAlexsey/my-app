@@ -1,15 +1,19 @@
 import { connect } from "react-redux";
+import { setFilmAC } from "redux/film-reducer";
 import Description from "./Description";
 
 
 let mapStateToProps = (state) => {
     return {
-        description: state.filmPage.description
+        film: state.filmPage
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        setFilm: (film) => {
+            dispatch(setFilmAC(film));
+        }
     }
 }
 
