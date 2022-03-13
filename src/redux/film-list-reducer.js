@@ -2,9 +2,14 @@ const SHOW_MORE = 'SHOW_MORE';
 const VIEWED = 'VIEWED';
 const UNVIEWED = 'UNVIEWED';
 const LOAD_DATA = 'LOAD_DATA'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_FILM_COUNT = 'SET_TOTAL_FILM_COUNT';
 
 let initialState = {
-    film: []
+    film: [],
+    pageSize: 3,
+    totalFilmCount: 0,
+    currentPage: 1
 }
 
 const filmListReducer = (state = initialState, action) => {
@@ -28,7 +33,11 @@ const filmListReducer = (state = initialState, action) => {
                 })
             }
         case LOAD_DATA:
-            return { ...state, film: [...state.film, ...action.film] }
+            return { ...state, film: [...action.film] }
+        case SET_CURRENT_PAGE:
+            return { ...state, currentPage: action.currentPage }
+        case SET_TOTAL_FILM_COUNT:
+            return { ...state, totalFilmCount: action.totalFilmCount }
         default:
             return state;
     }
@@ -36,8 +45,12 @@ const filmListReducer = (state = initialState, action) => {
 
 export const viewedAC = (filmId) => ({ type: VIEWED, filmId })
 
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+
 export const unViewedAC = (filmId) => ({ type: UNVIEWED, filmId })
 
 export const setFilmAC = (film) => ({ type: LOAD_DATA, film })
+
+export const setTotalFilmCountAC = (totalFilmCount) => ({ type: SET_TOTAL_FILM_COUNT, totalFilmCount })
 
 export default filmListReducer;

@@ -35,3 +35,7 @@
 .item .viewed {
     grid-area: c;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
