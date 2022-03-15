@@ -7,6 +7,7 @@ import FilmList from './FilmList';
 
 class FilmListContainer extends React.Component {
     componentDidMount() {
+        debugger;
         this.props.toggleIsFetching(true);
         axios.get(`https://localhost:7056/Film/list?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.toggleIsFetching(false);

@@ -1,22 +1,17 @@
 const ADD_COMMENT = 'ADD-COMMENT';
 const UPDATE_NEW_COMMENT = 'UPDATE-NEW-COMMENT';
+const CHANGE_NEW_COMMENT = 'CHANGE_NEW_COMMENT';
 const WRITE_NEW_COMMENT = 'Введите новый комментарий';
 const SET_FILM = 'SET_FILM'
 
 
 let initialState = {
+    film: null,
     comments: [],
-    film: [],
-    newCommentText: WRITE_NEW_COMMENT,
-    description: '',
-    id: 0,
-    name: '',
-    rate: 0,
-    url: ''
+    newCommentText: WRITE_NEW_COMMENT
 };
 
 const filmReducer = (state = initialState, action) => {
-    let stateCopy;
     switch (action.type) {
         case ADD_COMMENT:
             let newComment = {
@@ -42,14 +37,15 @@ const filmReducer = (state = initialState, action) => {
                 ...state,
                 newCommentText: action.text
             }
+        case CHANGE_NEW_COMMENT:
+            return {
+                ...state,
+                newCommentText: ''
+            }
         case SET_FILM:
             return {
                 ...state,
-                id: action.item.id,
-                name: action.item.name,
-                url: action.item.url,
-                description: action.item.description,
-                rate: action.item.rate,
+                film: action.item.film,
                 comments: [...action.item.comments]
             }
         default:
@@ -59,7 +55,9 @@ const filmReducer = (state = initialState, action) => {
 
 export const addCommenct = () => ({ type: ADD_COMMENT })
 
-export const updateNewCommenctText = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
+export const updateNewCommentText = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
+
+export const changeNewCommenctText = () => ({ type: CHANGE_NEW_COMMENT })
 
 export const setFilm = (item) => ({ type: SET_FILM, item })
 

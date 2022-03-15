@@ -1,9 +1,15 @@
+import Preloader from "components/common/Preloader/Preloader";
 import React from "react";
 import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
 
 const Comments = (props) => {
+
+    if (!props.comments) {
+        return <Preloader />
+    }
+
     let newCommentElement = React.createRef();
 
     let commentEllements = props.comments.map(c => (
@@ -22,9 +28,9 @@ const Comments = (props) => {
     };
 
     let onTextAreaChange = () => {
-        props.updateNewCommenct('');
+        props.changeNewCommenctText('');
     };
-debugger;
+
     return (
         <div className={s.content}>
             <div className={s.newComment}>

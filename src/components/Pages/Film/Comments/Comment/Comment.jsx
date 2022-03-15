@@ -7,7 +7,7 @@ const Comment = (props) => {
             <div>
                 {props.name}
             </div>
-            <img src={props.avatar}/>
+            <img src={props.avatar} />
             <div>
                 {props.text}
             </div>

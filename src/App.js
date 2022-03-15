@@ -17,7 +17,7 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <div className={'app-wrapper-content'}>
-                    <Route path={'/film/item/'} render={() => <FilmContainer />} />
+                    <Route path={'/film/Item/:filmId'} render={() => <FilmContainer />} />
                     <Route path={'/setting'} render={() => <Setting />} />
                     <Route exact path={'/search'} render={() => < SearchContainer />} />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
