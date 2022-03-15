@@ -6,7 +6,13 @@ const SET_FILM = 'SET_FILM'
 
 let initialState = {
     comments: [],
-    newCommentText: WRITE_NEW_COMMENT
+    film: [],
+    newCommentText: WRITE_NEW_COMMENT,
+    description: '',
+    id: 0,
+    name: '',
+    rate: 0,
+    url: ''
 };
 
 const filmReducer = (state = initialState, action) => {
@@ -44,18 +50,17 @@ const filmReducer = (state = initialState, action) => {
                 url: action.item.url,
                 description: action.item.description,
                 rate: action.item.rate,
-                comments: [...state.comments, ...action.item.comments]
+                comments: [...action.item.comments]
             }
         default:
             return state;
     }
-
 }
 
-export const addCommenctAC = () => ({ type: ADD_COMMENT })
+export const addCommenct = () => ({ type: ADD_COMMENT })
 
-export const updateNewCommenctTextAC = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
+export const updateNewCommenctText = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
 
-export const setFilmAC = (item) => ({ type: SET_FILM, item })
+export const setFilm = (item) => ({ type: SET_FILM, item })
 
 export default filmReducer;

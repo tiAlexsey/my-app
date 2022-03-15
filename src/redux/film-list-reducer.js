@@ -4,12 +4,14 @@ const UNVIEWED = 'UNVIEWED';
 const LOAD_DATA = 'LOAD_DATA'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_FILM_COUNT = 'SET_TOTAL_FILM_COUNT';
+const TOGGLE_IS_FEETCHING = 'TOGGLE_IS_FEETCHING';
 
 let initialState = {
     film: [],
     pageSize: 3,
     totalFilmCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 const filmListReducer = (state = initialState, action) => {
@@ -38,19 +40,23 @@ const filmListReducer = (state = initialState, action) => {
             return { ...state, currentPage: action.currentPage }
         case SET_TOTAL_FILM_COUNT:
             return { ...state, totalFilmCount: action.totalFilmCount }
+        case TOGGLE_IS_FEETCHING:
+            return { ...state, isFetching: action.isFetching }
         default:
             return state;
     }
 }
 
-export const viewedAC = (filmId) => ({ type: VIEWED, filmId })
+export const viewed = (filmId) => ({ type: VIEWED, filmId })
 
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 
-export const unViewedAC = (filmId) => ({ type: UNVIEWED, filmId })
+export const unViewed = (filmId) => ({ type: UNVIEWED, filmId })
 
-export const setFilmAC = (film) => ({ type: LOAD_DATA, film })
+export const setFilm = (film) => ({ type: LOAD_DATA, film })
 
-export const setTotalFilmCountAC = (totalFilmCount) => ({ type: SET_TOTAL_FILM_COUNT, totalFilmCount })
+export const setTotalFilmCount = (totalFilmCount) => ({ type: SET_TOTAL_FILM_COUNT, totalFilmCount })
+
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FEETCHING, isFetching })
 
 export default filmListReducer;

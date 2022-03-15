@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import './App.css';
-import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
-import Film from "./components/Pages/Film/Film";
-import Setting from "./components/Pages/Setting/Setting";
-import ToBeSeen from "./components/Pages/ToBeSeen/ToBeSeen";
-import SearchContainer from "components/Pages/Search/SearchContainer";
-import FilmListContainer from "components/Pages/FilmList/FilmListContainer";
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Setting from './components/Pages/Setting/Setting';
+import ToBeSeen from './components/Pages/ToBeSeen/ToBeSeen';
+import SearchContainer from 'components/Pages/Search/SearchContainer';
+import FilmListContainer from 'components/Pages/FilmList/FilmListContainer';
+import FilmContainer from 'components/Pages/Film/FilmContainer';
 
 
 const App = (props) => {
@@ -17,7 +17,7 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <div className={'app-wrapper-content'}>
-                    <Route path={'/film/item/'} render={() => <Film />} />
+                    <Route path={'/film/item/'} render={() => <FilmContainer />} />
                     <Route path={'/setting'} render={() => <Setting />} />
                     <Route exact path={'/search'} render={() => < SearchContainer />} />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />

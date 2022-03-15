@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addCommenctAC, updateNewCommenctTextAC } from "redux/film-reducer";
+import { addCommenct, updateNewCommenctText } from "redux/film-reducer";
 import Comments from "./Comments";
 
 
@@ -12,14 +12,14 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addCommenctActionCreator: () => {
-            dispatch(addCommenctAC());
+        addCommenct: () => {
+            dispatch(addCommenct());
         },
-        updateNewCommentAction: (text) => {
-            dispatch(updateNewCommenctTextAC(text));
+        updateNewCommentText: (text) => {
+            dispatch(updateNewCommenctText(text));
         },
-        updateNewCommenctActionCreator: () => {
-            dispatch(updateNewCommenctTextAC(''));
+        updateNewCommenct: () => {
+            dispatch(updateNewCommenctText(''));
         }
     }
 }

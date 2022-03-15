@@ -13,18 +13,18 @@ const Comments = (props) => {
     );
 
     let addComment = () => {
-        props.addCommenctActionCreator();
+        props.addCommenct();
     };
 
     let onCommentChange = () => {
         let text = newCommentElement.current.value;
-        props.updateNewCommentAction(text);
+        props.updateNewCommentText(text);
     };
 
     let onTextAreaChange = () => {
-        props.updateNewCommenctActionCreator('');
+        props.updateNewCommenct('');
     };
-
+debugger;
     return (
         <div className={s.content}>
             <div className={s.newComment}>
