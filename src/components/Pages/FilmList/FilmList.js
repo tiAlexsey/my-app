@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './FilmList.module.css'
+import Preeloader from 'components/common/Preloader/Preloader';
 
 let FilmList = (props) => {
     let pagesCount = Math.ceil(props.totalFilmCount / props.pageSize);
@@ -12,6 +13,7 @@ let FilmList = (props) => {
     }
     return (
         <div className={s.content}>
+            {props.isFetching ? <Preeloader /> : null}
             {pages.map(p => {
                 return <span className={props.currentPage === p && s.selectedPage}
                     onClick={(e) => { props.onPageChangeed(p); }}>{p}</span>

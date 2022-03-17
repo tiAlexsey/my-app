@@ -30,7 +30,7 @@ const Comments = (props) => {
     let onTextAreaChange = () => {
         props.changeNewCommenctText('');
     };
-
+    
     return (
         <div className={s.content}>
             <div className={s.newComment}>
