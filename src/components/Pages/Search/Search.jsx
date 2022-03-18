@@ -17,11 +17,11 @@ const Search = (props) => {
 
     let onSearchChange = () => {
         let text = newSearchFilm.current.value;
-        props.updateNewSearchFilm(text);
+        props.updateNewSearchFilmText(text);
     };
 
     let onTextAreaChange = () => {
-        props.updateNewSearchFilmChange();
+        props.changeNewSearchFilmText();
     };
     return (
         <div className={s.content}>

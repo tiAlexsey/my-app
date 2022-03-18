@@ -1,6 +1,7 @@
 const ADD_NEW_SEARCH_FILM = 'NEW-SEARCH-FILM';
 const UPDATE_NEW_SEARCH_FILM = 'UPDATE-NEW-SEARCH-FILM';
 const WRITE_NEW_SEARCH_FILM_TEXT = 'Введите название фильма для поиска';
+const CHANGE_NEW_SEARCH_FILM_TEXT = 'CHANGE_NEW_SEARCH_FILM_TEXT';
 
 let initialState = {
     searchResult: [
@@ -38,13 +39,20 @@ const searchResultReducer = (state = initialState, action) => {
                 ...state,
                 newSearchText: action.text
             }
+        case CHANGE_NEW_SEARCH_FILM_TEXT:
+            return {
+                ...state,
+                newSearchText: ''
+            }
         default:
             return state;
     }
 }
 
-export const addSearchFilmActionCreator = () => ({ type: ADD_NEW_SEARCH_FILM })
+export const addSearchFilm = () => ({ type: ADD_NEW_SEARCH_FILM })
 
-export const updateNewSearchFilmTextActionCreator = (text) => ({ type: UPDATE_NEW_SEARCH_FILM, text: text })
+export const updateNewSearchFilmText = (text) => ({ type: UPDATE_NEW_SEARCH_FILM, text: text })
+
+export const changeNewSearchFilmText = () => ({ type: CHANGE_NEW_SEARCH_FILM_TEXT })
 
 export default searchResultReducer;

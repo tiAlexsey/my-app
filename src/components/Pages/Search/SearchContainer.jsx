@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addSearchFilmActionCreator, updateNewSearchFilmTextActionCreator } from "redux/search-result-reducer";
+import { addSearchFilm, changeNewSearchFilmText, updateNewSearchFilmText } from "redux/search-result-reducer";
 import Search from "./Search";
 
 let mapStateToProps = (state) => {
@@ -8,19 +8,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateNewSearchFilmChange: () => {
-            dispatch(updateNewSearchFilmTextActionCreator(''));
-        },
-        updateNewSearchFilm: (text) => {
-            dispatch(updateNewSearchFilmTextActionCreator(text));
-        },
-        addSearchFilm: () => {
-            dispatch(addSearchFilmActionCreator());
-        }
-    }
-}
-const SearchContainer = connect(mapStateToProps, mapDispatchToProps)(Search);
+const SearchContainer = connect(mapStateToProps, { addSearchFilm, updateNewSearchFilmText, changeNewSearchFilmText })(Search);
 
 export default SearchContainer;
