@@ -1,3 +1,4 @@
+import { getFilm } from "api/api";
 import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
@@ -10,8 +11,8 @@ class FilmContainer extends React.Component {
     componentDidMount() {
         let filmId = this.props.match.params.filmId;
         this.props.setFilm({film: null, comments: []});
-        axios.get(`https://192.168.0.190:7056/Film/item/` + filmId).then(response => {
-            this.props.setFilm(response.data.item);
+        getFilm(filmId).then(data => {
+            this.props.setFilm(data.item);
         })
     }
 

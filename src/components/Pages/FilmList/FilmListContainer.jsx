@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getFilms } from 'api/api';
 import React from 'react';
 import { connect } from 'react-redux';
 import { setCurrentPage, setFilm, setTotalFilmCount, toggleIsFetching, unViewed, viewed } from 'redux/film-list-reducer';
@@ -7,19 +7,20 @@ import FilmList from './FilmList';
 class FilmListContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://192.168.0.190:7056/Film/list?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+
+        getFilms(this.props.currentPage,this.props.pageSize).then(data => {
             this.props.toggleIsFetching(false);
-            this.props.setFilm(response.data.item);
-            this.props.setTotalFilmCount(response.data.total)
+            this.props.setFilm(data.item);
+            this.props.setTotalFilmCount(data.total)
         });
     }
 
     onPageChangeed = (pageNumber => {
         this.props.setCurrentPage(pageNumber)
         this.props.toggleIsFetching(true);
-        axios.get(`https://https://192.168.0.190:7056/Film/list?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        getFilms(pageNumber,this.props.pageSize).then(data => {
             this.props.toggleIsFetching(false);
-            this.props.setFilm(response.data.item);
+            this.props.setFilm(data.item);
         });
     })
 
