@@ -1,19 +1,13 @@
-import { getFilm } from "api/api";
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addCommenct, changeNewCommenctText, setFilm, updateNewCommentText } from "redux/film-reducer";
+import { addCommenct, changeNewCommenctText, getFilm, updateNewCommentText } from "redux/film-reducer";
 import Film from "./Film";
 
 class FilmContainer extends React.Component {
 
     componentDidMount() {
-        let filmId = this.props.match.params.filmId;
-        this.props.setFilm({film: null, comments: []});
-        getFilm(filmId).then(data => {
-            this.props.setFilm(data.item);
-        })
+        this.props.getFilm(this.props.match.params.filmId);
     }
 
     render() {
@@ -29,4 +23,4 @@ let mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(FilmContainer);
 
-export default connect(mapStateToProps, { setFilm, addCommenct, updateNewCommentText, changeNewCommenctText })(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { addCommenct, updateNewCommentText, changeNewCommenctText, getFilm })(WithUrlDataContainerComponent);

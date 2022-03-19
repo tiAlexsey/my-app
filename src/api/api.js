@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-export const getFilms = (currentPage = 1,pageSize = 10) => {
-    return axios.get(`https://192.168.0.190:7056/Film/list?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-}
+const instance = axios.create({
+    baseURL: 'https://192.168.0.190:7056/Film/'
+});
 
-export const getFilm = (filmId = 0) => {
-    return axios.get(`https://192.168.0.190:7056/Film/item/` + filmId).then(response => response.data)
+export const filmAPI = {
+    getFilms(currentPage = 1, pageSize = 10) {
+        return instance.get(`list?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+    },
+    getFilm(filmId = 0) {
+        return instance.get(`item/` + filmId).then(response => response.data)
+    }
 }

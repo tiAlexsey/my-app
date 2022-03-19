@@ -1,3 +1,5 @@
+import { filmAPI } from "api/api";
+
 const SHOW_MORE = 'SHOW_MORE';
 const VIEWED = 'VIEWED';
 const UNVIEWED = 'UNVIEWED';
@@ -8,7 +10,7 @@ const TOGGLE_IS_FEETCHING = 'TOGGLE_IS_FEETCHING';
 
 let initialState = {
     film: [],
-    pageSize: 3,
+    pageSize: 4,
     totalFilmCount: 0,
     currentPage: 1,
     isFetching: false
@@ -58,5 +60,16 @@ export const setFilm = (film) => ({ type: LOAD_DATA, film })
 export const setTotalFilmCount = (totalFilmCount) => ({ type: SET_TOTAL_FILM_COUNT, totalFilmCount })
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FEETCHING, isFetching })
+
+export const getFilms = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        filmAPI.getFilms(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setFilm(data.item));
+            dispatch(setTotalFilmCount(data.total))
+        });
+    }
+}
 
 export default filmListReducer;

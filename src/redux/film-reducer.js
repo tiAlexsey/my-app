@@ -1,3 +1,5 @@
+import { filmAPI } from "api/api";
+
 const ADD_COMMENT = 'ADD-COMMENT';
 const UPDATE_NEW_COMMENT = 'UPDATE-NEW-COMMENT';
 const CHANGE_NEW_COMMENT = 'CHANGE_NEW_COMMENT';
@@ -60,5 +62,14 @@ export const updateNewCommentText = (text) => ({ type: UPDATE_NEW_COMMENT, text:
 export const changeNewCommenctText = () => ({ type: CHANGE_NEW_COMMENT })
 
 export const setFilm = (item) => ({ type: SET_FILM, item })
+
+export const getFilm = (filmId) => {
+    return (dispatch) => {
+        dispatch(setFilm({film: null, comments: []}));
+        filmAPI.getFilm(filmId).then(data => {
+            dispatch(setFilm(data.item));
+        })
+    }
+}
 
 export default filmReducer;

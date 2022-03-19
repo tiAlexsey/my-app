@@ -1,33 +1,25 @@
-import { getFilms } from 'api/api';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentPage, setFilm, setTotalFilmCount, toggleIsFetching, unViewed, viewed } from 'redux/film-list-reducer';
+import { getFilms, setCurrentPage, unViewed, viewed } from 'redux/film-list-reducer';
 import FilmList from './FilmList';
 
 class FilmListContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-
-        getFilms(this.props.currentPage,this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setFilm(data.item);
-            this.props.setTotalFilmCount(data.total)
-        });
+        this.props.getFilms(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChangeed = (pageNumber => {
+        this.props.getFilms(pageNumber, this.props.pageSize);
         this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true);
-        getFilms(pageNumber,this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setFilm(data.item);
-        });
+
     })
 
     render() {
         return <>
             <FilmList totalFilmCount={this.props.totalFilmCount}
                 pageSize={this.props.pageSize}
+                viewed={this.props.viewed}
+                unViewed={this.props.unViewed}
                 currentPage={this.props.currentPage}
                 onPageChangeed={this.onPageChangeed}
                 film={this.props.film}
@@ -48,6 +40,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    viewed, unViewed, setFilm, setCurrentPage, setTotalFilmCount, toggleIsFetching
-})(FilmListContainer);
+export default connect(mapStateToProps, { viewed, unViewed, setCurrentPage, getFilms })(FilmListContainer);

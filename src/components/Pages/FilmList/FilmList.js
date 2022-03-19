@@ -5,12 +5,12 @@ import Preeloader from 'components/common/Preloader/Preloader';
 
 let FilmList = (props) => {
     let pagesCount = Math.ceil(props.totalFilmCount / props.pageSize);
-
     let pages = [];
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
     return (
         <div className={s.content}>
             {props.isFetching ? <Preeloader /> : null}
@@ -20,9 +20,7 @@ let FilmList = (props) => {
             })}{
                 props.film.map(f =>
                     <div key={f.id} className={s.item}>
-                        {/* first item */}
                         <span className={s.img}><img src={f.url} /></span>
-                        {/* second item  */}
                         <div className={s.name}>
                             <NavLink to={'/Film/Item/' + f.id}>{f.name}</NavLink>
                         </div>
