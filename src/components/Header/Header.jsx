@@ -1,11 +1,12 @@
 import React from "react";
 import s from './Header.module.css';
+import logo from '../../logo.png'
 
 const Header = () => {
     return (
         <header className={s.header}>
             <div>
-                <img src='https://cdn.down10.software/img/icons/vdraw.png'/>
+                <img src={logo}/>
             </div>
         </header>
     )

@@ -3,11 +3,13 @@ import filmReducer from "./film-reducer";
 import searchResultReducer from "./search-result-reducer";
 import filmListReducer from "./film-list-reducer";
 import thunkMiddleWare from "redux-thunk";
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
     filmPage: filmReducer,
     searchResultPage: searchResultReducer,
-    filmListPage: filmListReducer
+    filmListPage: filmListReducer,
+    auth: authReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleWare));

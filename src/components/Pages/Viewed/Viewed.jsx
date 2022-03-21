@@ -1,13 +1,12 @@
 import { withAuthRedirect } from "hoc/withAuthRedirect";
 import React from "react";
-import s from './ToBeSeen.module.css';
 
-const ToBeSeen = (props) => {
+const Viewed = (props) => {
     return (
         <div>
-            To Be Seen
+            Viewed
         </div>
     )
 }
 
-export default withAuthRedirect(ToBeSeen);
+export default withAuthRedirect(Viewed);

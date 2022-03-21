@@ -8,6 +8,8 @@ import ToBeSeen from './components/Pages/ToBeSeen/ToBeSeen';
 import SearchContainer from 'components/Pages/Search/SearchContainer';
 import FilmListContainer from 'components/Pages/FilmList/FilmListContainer';
 import FilmContainer from 'components/Pages/Film/FilmContainer';
+import Login from 'components/Pages/Login/Login';
+import Viewed from 'components/Pages/Viewed/Viewed';
 
 
 const App = (props) => {
@@ -22,6 +24,8 @@ const App = (props) => {
                     <Route exact path={'/search'} render={() => < SearchContainer />} />
                     <Route exact path={'/toBeSeen'} render={() => <ToBeSeen />} />
                     <Route exact path={'/Film/list'} render={() => <FilmListContainer />} />
+                    <Route exact path={'/login'} render={() => <Login />} />
+                    <Route exact path={'/viewed'} render={() => <Viewed />} />
                 </div>
             </div>
         </BrowserRouter>
