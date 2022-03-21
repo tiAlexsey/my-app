@@ -1,5 +1,6 @@
 import { withAuthRedirect } from "hoc/withAuthRedirect";
 import React from "react";
+import { compose } from "redux";
 import s from './Setting.module.css'
 import SettingNavbar from './SettingNavbar/SettingNavbar'
 
@@ -19,4 +20,6 @@ class Setting extends React.Component {
     }
 }
 
-export default withAuthRedirect(Setting);
+export default compose(
+    withAuthRedirect
+)(Setting);

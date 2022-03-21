@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { getFilms, setCurrentPage, unViewed, viewed } from 'redux/film-list-reducer';
 import FilmList from './FilmList';
 
@@ -29,7 +30,6 @@ class FilmListContainer extends React.Component {
     }
 }
 
-
 let mapStateToProps = (state) => {
     return {
         film: state.filmListPage.film,
@@ -40,4 +40,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { viewed, unViewed, setCurrentPage, getFilms })(FilmListContainer);
+export default compose(
+    connect(mapStateToProps, { viewed, unViewed, setCurrentPage, getFilms })
+)(FilmListContainer);

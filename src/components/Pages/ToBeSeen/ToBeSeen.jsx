@@ -1,5 +1,6 @@
 import { withAuthRedirect } from "hoc/withAuthRedirect";
 import React from "react";
+import { compose } from "redux";
 import s from './ToBeSeen.module.css';
 
 const ToBeSeen = (props) => {
@@ -10,4 +11,8 @@ const ToBeSeen = (props) => {
     )
 }
 
-export default withAuthRedirect(ToBeSeen);
+
+
+export default compose(
+    withAuthRedirect
+)(ToBeSeen);

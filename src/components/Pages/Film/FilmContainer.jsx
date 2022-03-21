@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 import { addCommenct, changeNewCommenctText, getFilm, updateNewCommentText } from "redux/film-reducer";
 import Film from "./Film";
 
@@ -21,6 +22,7 @@ let mapStateToProps = (state) => ({
     newCommentText: state.filmPage.newCommentText
 })
 
-let WithUrlDataContainerComponent = withRouter(FilmContainer);
-
-export default connect(mapStateToProps, { addCommenct, updateNewCommentText, changeNewCommenctText, getFilm })(WithUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, { addCommenct, updateNewCommentText, changeNewCommenctText, getFilm }),
+    withRouter
+)(FilmContainer);

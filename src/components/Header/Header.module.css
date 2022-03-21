@@ -3,6 +3,18 @@
     background-color: #A2D4AB;
 }
 
-.header img {
+.contain {
+    display: grid;
+    grid-template-areas:
+        "a c b";
+    grid-template-rows: 100%;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.contain img {
     width: 60px;
+}
+
+.contain .login {
+    margin: auto;
 }

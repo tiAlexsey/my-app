@@ -1,5 +1,6 @@
 import { withAuthRedirect } from "hoc/withAuthRedirect";
 import React from "react";
+import { compose } from "redux";
 
 const Viewed = (props) => {
     return (
@@ -9,4 +10,6 @@ const Viewed = (props) => {
     )
 }
 
-export default withAuthRedirect(Viewed);
+export default compose(
+    withAuthRedirect
+)(Viewed);
