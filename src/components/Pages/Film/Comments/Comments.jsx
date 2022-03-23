@@ -13,7 +13,6 @@ const Comments = (props) => {
 
     const onSubmit = (value) => {
         props.addComment(value.newCommentText);
-        console.log(value.newCommentText);
     }
 
     let commentEllements = props.comments.map(c => (
@@ -34,7 +33,7 @@ const CommentForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component='textarea' name='newCommentText' placeholder='Enter your comment' />
+                <Field component='textarea' name='newCommentText' placeholder='Введите комментарий' />
             </div>
             <div>
                 <button>Добавить комментарий</button>

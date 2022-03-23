@@ -1,4 +1,4 @@
-const NEW_SEARCH_FILM = 'NEW-SEARCH-FILM';
+const NEW_SEARCH = 'NEW-SEARCH';
 
 let initialState = {
     searchResult: [
@@ -18,7 +18,7 @@ let initialState = {
 
 const searchResultReducer = (state = initialState, action) => {
     switch (action.type) {
-        case NEW_SEARCH_FILM:
+        case NEW_SEARCH:
             let newSearchResult = {
                 userId: 1,
                 searchId: 1,
@@ -34,6 +34,6 @@ const searchResultReducer = (state = initialState, action) => {
     }
 }
 
-export const addSearchFilm = (searchText) => ({ type: NEW_SEARCH_FILM, searchText })
+export const addSearch = (searchText) => ({ type: NEW_SEARCH, searchText })
 
 export default searchResultReducer;

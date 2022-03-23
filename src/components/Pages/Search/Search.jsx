@@ -11,8 +11,7 @@ const Search = (props) => {
     );
 
     const onSubmit = (value) => {
-        props.addSearchFilm(value.newCommentText);
-        console.log(value.newCommentText);
+        props.addSearch(value.newSearchText);
     }
 
     return (
@@ -35,7 +34,7 @@ const SearchForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component='textarea' name='newCommentText' placeholder='Enter your comment' />
+                <Field component='textarea' name='newSearchText' placeholder='Найти фильм' />
             </div>
             <div>
                 <button>Найти фильм</button>

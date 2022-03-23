@@ -1,7 +1,7 @@
 import { filmAPI } from "api/api";
 
 const ADD_COMMENT = 'ADD_COMMENT';
-const SET_FILM = 'SET_FILM'
+const SET_FILM = 'SET_FILM';
 
 
 let initialState = {
