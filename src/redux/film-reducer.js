@@ -1,16 +1,12 @@
 import { filmAPI } from "api/api";
 
-const ADD_COMMENT = 'ADD-COMMENT';
-const UPDATE_NEW_COMMENT = 'UPDATE-NEW-COMMENT';
-const CHANGE_NEW_COMMENT = 'CHANGE_NEW_COMMENT';
-const WRITE_NEW_COMMENT = 'Введите новый комментарий';
+const ADD_COMMENT = 'ADD_COMMENT';
 const SET_FILM = 'SET_FILM'
 
 
 let initialState = {
     film: null,
-    comments: [],
-    newCommentText: WRITE_NEW_COMMENT
+    comments: []
 };
 
 const filmReducer = (state = initialState, action) => {
@@ -19,7 +15,7 @@ const filmReducer = (state = initialState, action) => {
             let newComment = {
                 id: 1,
                 filmId: 1,
-                text: state.newCommentText,
+                text: action.commentText,
                 userId: 1,
                 like: 10,
                 dislike: 2,
@@ -31,18 +27,7 @@ const filmReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                comments: [...state.comments, newComment],
-                newCommentText: WRITE_NEW_COMMENT
-            }
-        case UPDATE_NEW_COMMENT:
-            return {
-                ...state,
-                newCommentText: action.text
-            }
-        case CHANGE_NEW_COMMENT:
-            return {
-                ...state,
-                newCommentText: ''
+                comments: [...state.comments, newComment]
             }
         case SET_FILM:
             return {
@@ -55,17 +40,13 @@ const filmReducer = (state = initialState, action) => {
     }
 }
 
-export const addCommenct = () => ({ type: ADD_COMMENT })
-
-export const updateNewCommentText = (text) => ({ type: UPDATE_NEW_COMMENT, text: text })
-
-export const changeNewCommenctText = () => ({ type: CHANGE_NEW_COMMENT })
+export const addComment = (commentText) => ({ type: ADD_COMMENT, commentText })
 
 export const setFilm = (item) => ({ type: SET_FILM, item })
 
 export const getFilm = (filmId) => {
     return (dispatch) => {
-        dispatch(setFilm({film: null, comments: []}));
+        dispatch(setFilm({ film: null, comments: [] }));
         filmAPI.getFilm(filmId).then(data => {
             dispatch(setFilm(data.item));
         })

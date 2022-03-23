@@ -1,5 +1,6 @@
 import Preloader from "components/common/Preloader/Preloader";
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
@@ -10,7 +11,10 @@ const Comments = (props) => {
         return <Preloader />
     }
 
-    let newCommentElement = React.createRef();
+    const onSubmit = (value) => {
+        props.addComment(value.newCommentText);
+        console.log(value.newCommentText);
+    }
 
     let commentEllements = props.comments.map(c => (
         <Comment className={s.item} name={c.user.name} text={c.text} like={c.like}
@@ -18,29 +22,27 @@ const Comments = (props) => {
         />)
     );
 
-    let addComment = () => {
-        props.addCommenct();
-    };
-
-    let onCommentChange = () => {
-        let text = newCommentElement.current.value;
-        props.updateNewCommentText(text);
-    };
-
-    let onTextAreaChange = () => {
-        props.changeNewCommenctText('');
-    };
-    
     return (
         <div className={s.content}>
-            <div className={s.newComment}>
-                <textarea onClick={onTextAreaChange}
-                    onChange={onCommentChange} ref={newCommentElement} value={props.newCommentText} />
-                <button onClick={addComment}>Добавить комментарий</button>
-            </div>
+            <CommentReduxForm onSubmit={onSubmit} />
             {commentEllements}
         </div>
     )
 }
+
+const CommentForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component='textarea' name='newCommentText' placeholder='Enter your comment' />
+            </div>
+            <div>
+                <button>Добавить комментарий</button>
+            </div>
+        </form>
+    )
+}
+
+const CommentReduxForm = reduxForm({ form: 'commentForm' })(CommentForm)
 
 export default Comments;
