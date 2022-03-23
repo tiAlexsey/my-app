@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addSearchFilm, changeNewSearchFilmText, updateNewSearchFilmText } from "redux/search-result-reducer";
+import { addSearchFilm } from "redux/search-result-reducer";
 import Search from "./Search";
 
 let mapStateToProps = (state) => {
@@ -8,6 +8,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-const SearchContainer = connect(mapStateToProps, { addSearchFilm, updateNewSearchFilmText, changeNewSearchFilmText })(Search);
+const SearchContainer = connect(mapStateToProps, {
+    addSearchFilm
+})(Search);
 
 export default SearchContainer;
