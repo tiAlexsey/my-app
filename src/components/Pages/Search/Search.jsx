@@ -1,8 +1,11 @@
+import { Textarea } from "components/common/FormsControls/FormsControls";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { maxLengthCreator, required } from "utils/validators/validators";
 import s from './Search.module.css';
 import SearchResult from "./SearchResult/SearchResult";
 
+const maxLength50 = maxLengthCreator(50);
 
 const Search = (props) => {
 
@@ -34,7 +37,11 @@ const SearchForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component='textarea' name='newSearchText' placeholder='Найти фильм' />
+                <Field component={Textarea}
+                    name='newSearchText'
+                    placeholder='Найти фильм'
+                    validate={[required ,maxLength50]}
+                    />
             </div>
             <div>
                 <button>Найти фильм</button>

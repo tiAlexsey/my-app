@@ -1,9 +1,13 @@
+import { Textarea } from "components/common/FormsControls/FormsControls";
 import Preloader from "components/common/Preloader/Preloader";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { maxLengthCreator, required } from "utils/validators/validators";
 import Comment from "./Comment/Comment";
 import s from './Comments.module.css';
 
+
+const maxLength220 = maxLengthCreator(220);
 
 const Comments = (props) => {
 
@@ -33,7 +37,7 @@ const CommentForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component='textarea' name='newCommentText' placeholder='Введите комментарий' />
+                <Field validate={ [required, maxLength220]} component={Textarea} name='newCommentText' placeholder='Введите комментарий' />
             </div>
             <div>
                 <button>Добавить комментарий</button>
