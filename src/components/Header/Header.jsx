@@ -1,17 +1,20 @@
 import React from "react";
 import s from './Header.module.css';
 import logo from '../../logo.png'
-import store from "redux/store-redux";
+import { connect } from "react-redux";
+import { entry } from "redux/auth-reducer";
 
-let auth = () => {
-    store.getState().auth.isAuth = !store.getState().auth.isAuth;
-    let message;
-    if (store.getState().auth.isAuth) message = 'Вы вошли в систему';
-    else message = 'Вы вышли из системы';
-    alert(message);
-}
 
 const Header = (props) => {
+
+    let auth = () => {
+        props.entry();
+        let message;
+        if (!props.isAuth) message = 'Вы вошли в систему';
+        else message = 'Вы вышли из системы';
+        alert(message);
+    }
+
     return (
         <header className={s.header}>
             <div className={s.contain}>
@@ -27,4 +30,8 @@ const Header = (props) => {
     )
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, { entry })(Header);

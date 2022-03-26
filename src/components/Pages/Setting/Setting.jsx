@@ -7,7 +7,6 @@ import SettingNavbar from './SettingNavbar/SettingNavbar'
 
 class Setting extends React.Component {
     render() {
-        debugger;
         return <div className={s.setting}>
         <SettingNavbar/>
         <div className={s.content}>

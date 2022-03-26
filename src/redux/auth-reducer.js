@@ -1,3 +1,4 @@
+const ENTRY = 'ENTRY';
 
 let initialState = {
     login: null,
@@ -6,10 +7,14 @@ let initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ENTRY:
+            debugger;
+            return { isAuth: !state.isAuth }
         default:
             return state;
     }
 }
 
+export const entry = () => ({ type: ENTRY })
 
 export default authReducer;
