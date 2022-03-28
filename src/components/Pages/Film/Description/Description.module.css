@@ -3,19 +3,10 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.description {
-}
-
 .header {
     text-align: center;
     padding: 20px;
     font-size: large;
-}
-
-.rate {
-}
-
-.about {
 }
 
 .poster {

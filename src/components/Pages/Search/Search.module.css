@@ -1,16 +1,34 @@
 .content {
     background-color: #E6EFC2;
-    height: 500px;
-}
-
-.header {
-    padding: 20px;
-    font-size: large;
-}
-
-.search {
-    margin: 0 20px;
+    height: 100%;
+    width: 100%;
     display: grid;
-    grid-template-columns: 10fr 2fr;
-    width: 70%;
+    grid-template-areas: 
+    "a"
+    "b";
 }
+
+.content .SearchForm {
+    grid-template-areas: "c d";
+    grid-template-columns: 3fr 2fr;
+    display: grid;
+    grid-area: a;
+}
+
+.content .SearchForm .SearchFormTextArea {
+    grid-area: c;
+    padding: 10px;
+}
+
+.content .SearchForm .SearchFormTextArea textarea{
+    width: 98%;
+    height: 20px;
+    resize: none;
+}
+
+.content .SearchForm .SearchFormButton {
+    padding: 10px;
+    grid-area: d;
+}
+
+

@@ -5,52 +5,47 @@ import { maxLengthCreator, required } from "utils/validators/validators";
 import s from './Search.module.css';
 import SearchResult from "./SearchResult/SearchResult";
 
-const maxLength50 = maxLengthCreator(50);
-
 const Search = (props) => {
 
-    let searchResultElement = props.searchResultPage.searchResult.map(sr => (
-        <SearchResult text={sr.stringSearch} key={sr.id} />)
-    );
-
     const onSubmit = (value) => {
-        props.addSearch(value.newSearchText);
+        props.searchFilm(value.searchFilms);
     }
+
+    let searchResultElement = props.searchResultPage.searchResult.map(e => (
+        <SearchResult url={e.url} name={e.name} id={e.id} />)
+    );
 
     return (
         <div className={s.content}>
-            <div className={s.search}>
+            <div>
                 <SearchReduxForm onSubmit={onSubmit} />
             </div>
-
-            <div>
-                Недавние поиски
-                <div>
-                    {searchResultElement}
-                </div>
+            <div className={s.resultForm}>
+                {searchResultElement}
             </div>
         </div>
     )
 }
 
+const maxLength50 = maxLengthCreator(50);
+
 const SearchForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
+        <form onSubmit={props.handleSubmit} className={s.SearchForm}>
+            <div className={s.SearchFormTextArea}>
                 <Field component={Textarea}
-                    name='newSearchText'
+                    name='searchFilms'
                     placeholder='Найти фильм'
-                    validate={[required ,maxLength50]}
-                    />
+                    validate={[required, maxLength50]}
+                />
             </div>
-            <div>
+            <div className={s.SearchFormButton}>
                 <button>Найти фильм</button>
             </div>
         </form>
     )
 }
 
-
-const SearchReduxForm = reduxForm({ form: 'commentForm' })(SearchForm)
+const SearchReduxForm = reduxForm({ form: 'searchForm' })(SearchForm)
 
 export default Search;

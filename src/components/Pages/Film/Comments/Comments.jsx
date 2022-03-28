@@ -20,15 +20,20 @@ const Comments = (props) => {
     }
 
     let commentEllements = props.comments.map(c => (
-        <Comment className={s.item} name={c.user.name} text={c.text} like={c.like}
+        <Comment name={c.user.name} text={c.text} like={c.like}
             dislike={c.dislike} avatar={c.user.url} key={c.id}
+        // className={s.item}
         />)
     );
 
     return (
         <div className={s.content}>
-            <CommentReduxForm onSubmit={onSubmit} />
-            {commentEllements}
+            <div className={s.newComment}>
+                <CommentReduxForm onSubmit={onSubmit} />
+            </div>
+            <div className={s.existComments}>
+                {commentEllements}
+            </div>
         </div>
     )
 }
@@ -37,7 +42,7 @@ const CommentForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field validate={ [required, maxLength220]} component={Textarea} name='newCommentText' placeholder='Введите комментарий' />
+                <Field validate={[required, maxLength220]} component={Textarea} name='newCommentText' placeholder='Введите комментарий' />
             </div>
             <div>
                 <button>Добавить комментарий</button>

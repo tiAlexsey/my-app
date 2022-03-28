@@ -17,21 +17,20 @@ let FilmList = (props) => {
             {pages.map(p => {
                 return <span className={props.currentPage === p && s.selectedPage}
                     onClick={(e) => { props.onPageChangeed(p); }}>{p}</span>
-            })}{
-                props.film.map(f =>
-                    <div key={f.id} className={s.item}>
-                        <span className={s.img}><img src={f.url} /></span>
-                        <div className={s.name}>
-                            <NavLink to={'/Film/Item/' + f.id}>{f.name}</NavLink>
-                        </div>
-                        <div className={s.viewed}>
-                            {f.viewed
-                                ? <button onClick={() => { props.unViewed(f.id) }}>Viewed</button>
-                                : <button onClick={() => { props.viewed(f.id) }}>Unviewed</button>
-                            }
-                        </div>
+            })}
+            {props.film.map(f =>
+                <div key={f.id} className={s.item}>
+                    <span className={s.img}><img src={f.url} /></span>
+                    <div className={s.name}>
+                        <NavLink to={'/Film/Item/' + f.id}>{f.name}</NavLink>
                     </div>
-                )
+                    <div className={s.viewed}>
+                        {f.viewed
+                            ? <button onClick={() => { props.unViewed(f.id) }}>Viewed</button>
+                            : <button onClick={() => { props.viewed(f.id) }}>Unviewed</button>
+                        }
+                    </div>
+                </div>)
             }
         </div>
     )

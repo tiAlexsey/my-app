@@ -1,14 +1,18 @@
 .content {
- margin: 0 20px;
+    margin: 0 20px;
 }
 
-.newComment {
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 10fr 2fr;
+.content .newComment {
+    margin-bottom: 7px;
     width: 70%;
 }
 
+.content .newComment textarea {
+    width: 102%;
+    height: 70px;
+    resize: none;
+}
+
 .item {
-    width: 80%;
+    width: 100%;
 }
