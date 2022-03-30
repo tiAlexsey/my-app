@@ -16,5 +16,15 @@ export const filmAPI = {
     },
     searchFilm(text) {
         return instance.get(`list/search?name=` + text).then(response => response.data)
+    },
+    addComment(comment) {
+        return instance.post(`comment/add`, {
+            id: 0,
+            filmId: comment.filmId,
+            text: comment.text,
+            userId: comment.userId,
+            like: 0,
+            dislike: 0
+        }).then(response =>response.data)
     }
 }
