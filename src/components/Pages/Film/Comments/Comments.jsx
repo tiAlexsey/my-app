@@ -16,9 +16,10 @@ const Comments = (props) => {
 
     const onSubmit = (value) => {
         let comment = {
-            filmId: parseInt(props.match.params.filmId, 10),
+            filmId: props.match.params.filmId,
             text: value.text,
-            userId: Math.floor(Math.random()*5)+1
+            // генерируем случайного пользователя
+            userId: Math.floor(Math.random()*9)+1
         }
         console.log(comment);
         props.addComment(comment);

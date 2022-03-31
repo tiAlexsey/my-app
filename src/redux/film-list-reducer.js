@@ -61,10 +61,10 @@ export const setTotalFilmCount = (totalFilmCount) => ({ type: SET_TOTAL_FILM_COU
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FEETCHING, isFetching })
 
-export const getFilms = (currentPage, pageSize) => {
+export const requestFilms = (page, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        filmAPI.getFilms(currentPage, pageSize).then(data => {
+        filmAPI.getFilms(page, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setFilm(data.item));
             dispatch(setTotalFilmCount(data.total))
