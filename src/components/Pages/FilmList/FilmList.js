@@ -15,8 +15,10 @@ let FilmList = (props) => {
         <div className={s.content}>
             {props.isFetching ? <Preeloader /> : null}
             {pages.map(p => {
-                return <span className={props.currentPage === p && s.selectedPage}
-                    onClick={(e) => { props.onPageChangeed(p); }}>{p}</span>
+                return <span className={(props.currentPage === p) ? s.selectedPage : s.none}
+                    key={p}
+                    onClick={(e) => { props.onPageChangeed(p); }}>{p}
+                </span>
             })}
             {props.film.map(f =>
                 <div key={f.id} className={s.item}>

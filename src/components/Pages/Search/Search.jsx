@@ -12,7 +12,7 @@ const Search = (props) => {
     }
 
     let searchResultElement = props.searchResultPage.searchResult.map(e => (
-        <SearchResult url={e.url} name={e.name} id={e.id} />)
+        <SearchResult url={e.url} name={e.name} key={e.id} id={e.id}/>)
     );
 
     return (
