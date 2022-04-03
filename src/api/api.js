@@ -26,5 +26,12 @@ export const filmAPI = {
             like: 0,
             dislike: 0
         }).then(response =>response.data)
+    },
+    addLike(commentID){
+        debugger;
+        return instance.post(`comment/like?idComment=`+commentID+`&type=true`);
+    }, 
+    addDislike(commentID) {
+        return instance.post(`comment/dislike?idComment=`+commentID+`&type=true`);
     }
 }

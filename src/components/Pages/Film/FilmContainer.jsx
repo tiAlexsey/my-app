@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
-import { addComment, getFilm } from "redux/film-reducer";
+import { addComment, addDislike, addLike, getFilm } from "redux/film-reducer";
 import Film from "./Film";
 
 class FilmContainer extends React.Component {
@@ -22,6 +22,6 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, { addComment, getFilm }),
+    connect(mapStateToProps, { addComment, getFilm, addLike, addDislike }),
     withRouter
 )(FilmContainer);

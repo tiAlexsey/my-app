@@ -19,14 +19,16 @@ const Comments = (props) => {
             filmId: props.match.params.filmId,
             text: value.text,
             // генерируем случайного пользователя
-            userId: Math.floor(Math.random()*9)+1
+            userId: Math.floor(Math.random() * 9) + 1
         }
         props.addComment(comment);
     }
 
     let commentEllements = props.comments.map(c => (
-        <Comment name={c.user.name} text={c.text} like={c.like}
+        <Comment addLike={props.addLike} addDislike={props.addDislike}
+            name={c.user.name} text={c.text} like={c.like} id={c.id}
             dislike={c.dislike} avatar={c.user.url} key={c.id}
+            filmId={props.film.id}
         />)
     );
 

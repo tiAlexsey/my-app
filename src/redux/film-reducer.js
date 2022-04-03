@@ -39,4 +39,20 @@ export const addComment = (comment) => {
     }
 }
 
+export const addLike = (commentId, filmId) => {
+    return (dispatch) => {
+        filmAPI.addLike(commentId).then(data => {
+        dispatch(getFilm(filmId))
+        })
+    }
+}
+
+export const addDislike = (commentId, filmId) => {
+    return (dispatch) => {
+        filmAPI.addDislike(commentId).then(data => {
+        dispatch(getFilm(filmId))
+        })
+    }
+}
+
 export default filmReducer;
