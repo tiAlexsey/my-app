@@ -5,8 +5,6 @@ const instance = axios.create({
     //baseURL: 'http://192.168.0.190:5056/Film/'
 });
 
-
-
 export const filmAPI = {
     getFilms(currentPage = 1, pageSize = 10) {
         return instance.get(`list?page=${currentPage}&count=${pageSize}`).then(response => response.data)
@@ -15,16 +13,13 @@ export const filmAPI = {
         return instance.get(`item/` + filmId).then(response => response.data)
     },
     searchFilm(text) {
-        return instance.get(`list/search?name=` + text).then(response => response.data)
+        return instance.get(`search?name=` + text).then(response => response.data)
     },
     addComment(comment) {
         return instance.post(`comment/add`, {
-            id: 0,
             filmId: comment.filmId,
             text: comment.text,
-            userId: comment.userId,
-            like: 0,
-            dislike: 0
+            userId: comment.userId
         }).then(response =>response.data)
     },
     addLike(commentID){
