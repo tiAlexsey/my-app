@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { requestFilms, setCurrentPage, unViewed, viewed } from 'redux/film-list-reducer';
+import { requestFilms, setCurrentPage, setFilmsCount, unViewed, viewed } from 'redux/film-list-reducer';
 import { getCurrentPage, getFilms, getIsFetching, getPageSize, getTotalFilmCount } from '..//..//..//selectors/film-list-selectors';
 import FilmList from './FilmList';
 
 class FilmListContainer extends React.Component {
     componentDidMount() {
+        this.props.setFilmsCount();
         this.props.getFilms(this.props.currentPage, this.props.pageSize);
     }
 
@@ -41,5 +42,5 @@ let mapStateToProps = (state) => {
     }
 }
 export default compose(
-    connect(mapStateToProps, { viewed, unViewed, setCurrentPage, getFilms: requestFilms })
+    connect(mapStateToProps, { setFilmsCount, viewed, unViewed, setCurrentPage, getFilms: requestFilms })
 )(FilmListContainer);
